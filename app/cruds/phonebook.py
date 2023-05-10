@@ -27,7 +27,7 @@ def get_phonebook(id: int, db:Session=Depends(get_db)):
                             detail="User not found in Phonebook")
 
 def list_phonebook_users(db:Session=  Depends(get_db)):
-    query =  db.query(models.Phonebook).all()
+    query =  db.query(models.Phonebook).all()[::-1]
     response = query if len(query) > 0 else "No record found in db"
     return {"data": response, "status": status.HTTP_200_OK}
 
