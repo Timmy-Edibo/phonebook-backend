@@ -39,7 +39,7 @@ def delete_phonebook(id: int, db:Session=Depends(get_db)):
     return phonebook.delete_user(id, db)
 
 
-@phonebook_router.delete("/search")
+@phonebook_router.post("/search")
 def search_phonebook_user(lastname: str, db:Session=Depends(get_db)):
     
     return phonebook.search_phonebook_user(lastname, db)
