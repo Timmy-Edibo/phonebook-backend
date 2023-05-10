@@ -1,4 +1,5 @@
 from fastapi import ( Depends, HTTPException, status)
+from sqlalchemy import func
 
 
 from app.schemas.phonebook import Phonebook
@@ -54,6 +55,21 @@ def delete_user(id: int, db:Session=Depends(get_db)):
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail="User not found in phonebook")
+    
+def search_phonebook_user(lastname: str, db:Session=Depends(get_db)):
+    query =  db.query(models.Phonebook).filter(
+        func.lower(models.Phonebook.lastname).like(func.lower(f"%{lastname}%"))
+    ).all()
+    
+    # db.query(models.Phonebook).filter(
+    #     models.Phonebook.lastname == lastname).first()
+    
+    if not query:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
+                                detail="User not found in phonebook")
+        
+    return {"data": query, "status": status.HTTP_200_OK}
+
 
 # def delete_all_user(db:Session=  Depends(get_db)):
 #     query =  db.query(models.User).all()
