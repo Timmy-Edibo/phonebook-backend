@@ -8,15 +8,22 @@ from app.database.db import get_db
 from sqlalchemy.orm import Session
 
 
-def  register_user(request: Phonebook, db: Session = Depends(get_db)):
-    
-    user_request = models.Phonebook(**request.dict())
-    db.add(user_request)
-    db.commit()
-    db.refresh(user_request)
-         
-    return user_request
-
+def register_user(request: Phonebook, db: Session = Depends(get_db)):
+    try:
+        user_request = models.Phonebook(**request.dict())
+        user_request.firstname = str(user_request.firstname).title()
+        user_request.lastname = str(user_request.lastname).title()
+        
+        db.add(user_request)
+        db.commit()
+        db.refresh(user_request)
+        
+        return user_request
+    except Exception as e:
+        db.rollback()  # Roll back the changes in case of an exception
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, 
+                            detail="Cannot add user into phonebook") from e
+        
 def get_phonebook(id: int, db:Session=Depends(get_db)):
     
     if query :=  db.query(models.Phonebook).filter(
