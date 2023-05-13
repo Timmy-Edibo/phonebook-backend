@@ -9,12 +9,13 @@ load_dotenv()
 DATABASE_NAME = os.environ.get("DATABASE_NAME")
 DATABASE_USER=os.environ.get("DATABASE_USER")
 DATABASE_PASSWORD=os.environ.get("DATABASE_PASSWORD") 
+DATABASE_HOST=os.environ.get("DATABASE_HOST")
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./phonebook.db"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+# SQLALCHEMY_DATABASE_URL = "sqlite:///./phonebook.db"
+# engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 
-# SQLALCHEMY_DATABASE_URL = f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@localhost/{DATABASE_NAME}"
-# print(SQLALCHEMY_DATABASE_URL)
+SQLALCHEMY_DATABASE_URL = f"postgresql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}/{DATABASE_NAME}"
+print(SQLALCHEMY_DATABASE_URL)
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
