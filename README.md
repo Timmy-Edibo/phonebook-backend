@@ -48,8 +48,8 @@ If you're using a different user, replace postgres with the appropriate username
 1. Command to create file
 ### touch .env
 
-2. Use this template below to store secret credentials in file
-    DATABASE_NAME=phonebook
+2. Use this template below to store secret credentials in file \
+    DATABASE_NAME=phonebook \
     DATABASE_USER= \
     DATABASE_PASSWORD= \
     ATABASE_PORT=5432 \
