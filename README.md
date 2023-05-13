@@ -49,10 +49,10 @@ If you're using a different user, replace postgres with the appropriate username
 ### touch .env
 
 2. Use this template below to store secret credentials in file
-    DATABASE_NAME=phonebook
-    DATABASE_USER=
-    DATABASE_PASSWORD=
-    DATABASE_PORT=5432
+    DATABASE_NAME=phonebook  \
+    DATABASE_USER= \  
+    DATABASE_PASSWORD= \
+    DATABASE_PORT=5432 \
 
     SECRET_KEY=add secret key here
     ALGORITHM=HS256
