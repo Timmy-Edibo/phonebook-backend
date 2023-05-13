@@ -61,4 +61,3 @@ If you're using a different user, replace postgres with the appropriate username
 
 4. Finally, Run the project in developement mode using the following command:
 ### `uvicorn app.main:app --reload`
-In the project directory, you can run:
