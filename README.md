@@ -54,8 +54,8 @@ If you're using a different user, replace postgres with the appropriate username
     DATABASE_PASSWORD= \
     DATABASE_PORT=5432 \
 
-    SECRET_KEY=add secret key here
-    ALGORITHM=HS256
+    SECRET_KEY=add secret key here \
+    ALGORITHM=HS256 \
     ACCESS_TOKEN_EXPIRE_MINUTES=60
 
 
