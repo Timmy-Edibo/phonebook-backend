@@ -6,8 +6,8 @@ from app.routers import phonebook
 
 
 app = FastAPI(title="Phonebook App",
-              description="A multi-functional platform where authors and readers  \
-              can create and have access to their own content.",
+              description="A platform where users can manage  \
+              their contacts",
               version="1.0.0")
 
 
